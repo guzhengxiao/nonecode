@@ -1,4 +1,4 @@
-module guzhengxiao/nonecode
+module github.com/guzhengxiao/nonecode
 
 go 1.20
 
