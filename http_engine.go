@@ -10,6 +10,15 @@ type HttpServer struct {
 func NewHttpServer(g *gin.Engine) *HttpServer {
 	return &HttpServer{Engine: g}
 }
+func (s *HttpServer) Use(handlers ...func(c *Context)) *HttpServer {
+	RHandles := make([]gin.HandlerFunc, 0)
+	for _, handle := range handlers {
+		RHandles = append(RHandles, handleFunc(handle))
+	}
+	s.Engine.Use(RHandles...)
+	return s
+	// return &RouterGroup{s.Engine.Group(relativePath, RHandles...)}
+}
 
 // Group 重写路由组注册
 func (s *HttpServer) Group(relativePath string, handlers ...func(c *Context)) *RouterGroup {
