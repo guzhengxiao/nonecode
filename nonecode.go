@@ -1,7 +1,7 @@
 package nonecode
 
 import (
-	"guzhengxiao/nonecode/http_server"
+	"github.com/guzhengxiao/nonecode/http_server"
 
 	"github.com/gin-gonic/gin"
 )
