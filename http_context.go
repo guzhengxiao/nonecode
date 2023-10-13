@@ -22,7 +22,7 @@ func (c *Context) GetDB() *gorm.DB {
 	if !ok {
 		return nil
 	}
-	return db.(*GormMiddleware).Session(&gorm.Session{
+	return db.(*MiddlewareGorm).Session(&gorm.Session{
 		PrepareStmt: true,
 		// NowFunc: func() time.Time {
 		// 	return time.Now().Local()time.LoadLocation(lib.ConfigData.App.Timezone)

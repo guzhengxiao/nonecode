@@ -8,7 +8,7 @@ import (
 	"gorm.io/gorm/schema"
 )
 
-// var DB *gorm.DB
+var GormClient *gorm.DB
 
 type GormConfig struct {
 	User     string
@@ -25,12 +25,12 @@ func NewGorm(conf *GormConfig) *gorm.DB {
 		conf.Host,
 		conf.Port,
 		conf.Database)
-	db, _ := gorm.Open(mysql.Open(dsn), &gorm.Config{
+	GormClient, _ = gorm.Open(mysql.Open(dsn), &gorm.Config{
 		SkipDefaultTransaction: true,
 		NamingStrategy: schema.NamingStrategy{
 			SingularTable: true, // 使用单数表名，启用该选项后，`User` 表将是`user`
 		},
 	})
 
-	return db
+	return GormClient
 }
