@@ -1,5 +1,0 @@
-package middware
-
-func NewGorm() {
-
-}
